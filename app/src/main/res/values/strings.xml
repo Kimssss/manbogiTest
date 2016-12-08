@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NaverCodeTest</string>
+    <string name="kilometer">km</string>
+    <string name="meter">m</string>
+
+    <string name="now_location">현재 위치</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="man_bo_gi_screan">만보기 화면</string>
+    <string name="man_bo_gi_record">만보기 기록</string>
+
+</resources>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.1_94696555e44e104815cd1ca8df8ede4e906bda36/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.1_e7ef0b9ced83214716c158aae939ca2a8d752b7c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.0.1_ad940dd0cc078fed3d960ec8fbf810c6937fef2b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.1_bf50d6b300f61e64ee74df646e51b098cba578c6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.1_4d03518a9402c16230da43305aef16342059b60a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.1_ff0a6929ecfdb4fda926ffe3d61bcc34e2645f77/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_e18398f3faa687f4340cb1c1fa70867d49075d7d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_31cfbc9d1b849fc092851f75be0c29ac1c867778/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ba023eb6c6d8159a2b4a93fd26c0ef7ee67dc143">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_73d216516b7239d424336312657e99b787476dc3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="40f71ae6f155f71f3c47d893eeff0ec058dd503c">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_6e4f6340ed4006a6fcb211379eab2134302a2e73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.1_53074ad7c0df52322ed39884da9e1e53626b72a1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.0.1_9eeaa002e7451cd3f8675c8e85fb9feb53f9dd11/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_b2250a2921dcc1998e92dee791ab1ae9cf0e4cf4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.naver.maps.open/naver-map-api/2.1.2/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f986c2ee54e63f769a178876f2e203c2e95b2ba2">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.naver.maps.open-naver-map-api-2.1.2_de8c3cff779f4958b664e47cb61ba8f0d534b552/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_c4c24017635889cd30d5325931342df441095664/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.1_a4e7f396e88824c7015316c3c304c947b5a31511/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.1_473f0e178528f103076eaf46e14d93735971aefb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="/Users/sangwoo-pc/Documents/SsocioAndroid/NaverCodeTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_940abba269d3741190d83e21fbce8d6d4f5ba332/classes.dex" />
+    </item>
+
+</items>
