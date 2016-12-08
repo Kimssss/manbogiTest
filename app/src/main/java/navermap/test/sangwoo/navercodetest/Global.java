@@ -1,7 +1,6 @@
 package navermap.test.sangwoo.navercodetest;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import android.content.Context;
 
 /**
  * Created by sangwoo-pc on 2016. 12. 6..
@@ -10,26 +9,31 @@ import java.io.IOException;
 public class Global {
     public static final String PREFERENCE_NAME = "Naver";
 
-//    public static final String PREFERENCES_MANBO_COUNT_NAME = "manbo_count";
     public static final int PREFERNCES_MANBO_COUNT_DEFAULT_VALUE = 0;
 
-//    public static final String PREFERENCES_DISTANCE_NAME = "distance";
 
 
     public static final String PREFERENCES_LATITUDE_NAME = "Latitude";
     public static final String PREFERENCES_LONGITUDE_NAME = "Longitude";
-//    public static final String PREFERENCES_TIME = "time";
 
     public static final int FAIL_GET_GPS_INFOMATION = -1;
     public static final double MAX_ONE_SETP_MOVE_DISTANCE = 2;
 
 
-    static String convert(String str, String encoding) throws IOException {
-        ByteArrayOutputStream requestOutputStream = new ByteArrayOutputStream();
-        requestOutputStream.write(str.getBytes(encoding));
-        return requestOutputStream.toString(encoding);
+
+    public static  String  getMeterOrKillmeter(Context context,double value){
+
+        if(1000>value)
+                return String.valueOf(Global.meter(value)) + context.getString(R.string.meter);
+        else
+            return String.valueOf(Global.meterToKillmeter(value)) + context.getString(R.string.kilometer);
     }
 
+
+    public static  String  getManBOcount(Context context,int count){
+
+        return count + context.getString(R.string.man_bo_gi_count);
+    }
 
 
     public static double meterToKillmeter(double value){

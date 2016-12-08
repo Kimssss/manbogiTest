@@ -63,19 +63,10 @@ public class DBlistAdapter extends BaseAdapter {
             date.setText(list.get(i).getDate());
 
             TextView count = (TextView) convertView.findViewById(R.id.txv_count);
-            count.setText(String.valueOf(list.get(i).getManBoGiCount()));
+            count.setText(Global.getManBOcount(context,list.get(i).getManBoGiCount()));
 
             TextView txvDistence = (TextView) convertView.findViewById(R.id.txv_distence);
-
-            double distence = list.get(i).getDistence();
-
-            if(1000>distence){
-                txvDistence.setText(String.valueOf(Global.meter(list.get(i).getDistence())) + context.getString(R.string.meter));
-
-            }else{
-                txvDistence.setText(String.valueOf(Global.meterToKillmeter(list.get(i).getDistence())) + context.getString(R.string.kilometer));
-
-            }
+            txvDistence.setText(Global.getMeterOrKillmeter(context, list.get(i).getDistence()));
 
 
         }

@@ -1,5 +1,6 @@
 package navermap.test.sangwoo.navercodetest;
 
+import android.Manifest;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ComponentName;
@@ -10,15 +11,21 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 import com.nhn.android.maps.NMapActivity;
 import com.nhn.android.maps.NMapView;
 import com.nhn.android.maps.nmapmodel.NMapError;
 import com.nhn.android.maps.nmapmodel.NMapPlacemark;
+
+import java.util.ArrayList;
 
 import static navermap.test.sangwoo.navercodetest.Global.PREFERENCE_NAME;
 
@@ -81,7 +88,7 @@ public class MainActivity extends NMapActivity {
     protected void onResume() {
         super.onResume();
         isPause = false;
-        if(mService != null)
+        if(mService != null && fragmentMain != null && fragmentMain.isServiceStart())
             mService.onActivityInfo(isPause);
 
         intiFragmantMain();
@@ -91,8 +98,13 @@ public class MainActivity extends NMapActivity {
     @Override
     protected void onPause() {
         isPause =true;
-        if(mService != null)
-            mService.onActivityInfo(isPause);
+        if(mService != null && fragmentMain != null && fragmentMain.isServiceStart()){
+            if(Build.VERSION.SDK_INT >= 23) {
+                if (Settings.canDrawOverlays(this)) {
+                    mService.onActivityInfo(isPause);
+                }
+            }
+        }
         super.onPause();
     }
 
@@ -125,7 +137,8 @@ public class MainActivity extends NMapActivity {
             tran.commitAllowingStateLoss();
 
 
-            runOnUiThread(new Runnable() {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     SharedPreferences sharedPreferences
@@ -134,7 +147,9 @@ public class MainActivity extends NMapActivity {
                     fragmentMain.setDistance(sharedPreferences.getFloat(DBManager.SQL_LITE_DATABASE_DISTENCE,DBManager.DEFAULT_VALUE_DISTENCE));
 
                 }
-            });
+            },1000);
+
+
 
             fragmentMain.setServiceClickLietener(new FragmentMain.ServiceClickLietener() {
                 @Override
@@ -157,22 +172,26 @@ public class MainActivity extends NMapActivity {
             tran= manager.beginTransaction();
 
             tran.replace(R.id.container, fragmentSQLite);
-            tran.commit();
+            tran.commitAllowingStateLoss();
         }
     }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        if(Build.VERSION.SDK_INT >= 23) {
-            if (!Settings.canDrawOverlays(this)) {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                        Uri.parse("package:" + getPackageName()));
-                startActivityForResult(intent, 1234);
-            }
+    PermissionListener permissionlistener = new PermissionListener() {
+        @Override
+        public void onPermissionGranted() {
+            intiFragmantMain();
         }
 
+        @Override
+        public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+            Toast.makeText(MainActivity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+
+    };
+
+    public void init(){
         manager= (FragmentManager)getFragmentManager();
 
         fragmentMain = new FragmentMain();
@@ -182,7 +201,17 @@ public class MainActivity extends NMapActivity {
         findViewById(R.id.btn_main).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intiFragmantMain();
+                if(Build.VERSION.SDK_INT >= 23) {
+
+                    new TedPermission(MainActivity.this)
+                            .setPermissionListener(permissionlistener)
+                            .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                            .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+                            .check();
+                }else {
+                    init();
+                }
+
             }
         });
 
@@ -205,6 +234,15 @@ public class MainActivity extends NMapActivity {
 
         intiFragmantMain();
 
+
+
+        setMapDataProviderListener(onDataProviderListener );
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         NMapView mMapView = new NMapView(this);
         mMapView.setClientId("p_KrYE68n6BxcZLxdJXu");
         mMapView.setClickable(true);
@@ -213,7 +251,18 @@ public class MainActivity extends NMapActivity {
         mMapView.setFocusableInTouchMode(true);
         mMapView.requestFocus();
 
-        setMapDataProviderListener(onDataProviderListener );
+        init();
+
+        if(Build.VERSION.SDK_INT >= 23) {
+            if (!Settings.canDrawOverlays(this)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, 1234);
+            }
+
+        }
+
+
 
 
     }

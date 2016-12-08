@@ -73,22 +73,37 @@ public class FragmentMain extends Fragment {
             return;
 
         if(txvCount != null)
-            txvCount.setText(String.valueOf(count));
+            txvCount.setText(Global.getManBOcount(getActivity() , count));
     }
 
+    public boolean isServiceStart(){
+        if(getActivity() == null)
+            return false;
+
+        if(btnStart == null)
+            return false;
+
+        if(btnStart.getText().toString().equals(getString(R.string.start))){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
     public void setDistance(double distance){
         if(getActivity() == null)
             return;
 
         if(txvDistence != null){
 
-            if(1000> distance){
-                txvDistence.setText(Global.meter(distance) + getString(R.string.meter));
-
-            }else {
-                txvDistence.setText(Global.meterToKillmeter(distance) + getString(R.string.kilometer));
-
-            }
+//            if(1000> distance){
+//                txvDistence.setText(Global.meter(distance) + getString(R.string.meter));
+//
+//            }else {
+//                txvDistence.setText(Global.meterToKillmeter(distance) + getString(R.string.kilometer));
+//
+//            }
+            txvDistence.setText(Global.getMeterOrKillmeter(getActivity(),distance));
         }
     }
 

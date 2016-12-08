@@ -21,7 +21,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nhn.android.maps.NMapCompassManager;
 import com.nhn.android.maps.NMapLocationManager;
@@ -90,6 +89,7 @@ public class MainService extends Service implements SensorEventListener {
     TextView txvBackgroundCount;
     boolean isPause = false;
 
+    long currentTime = 0;
     public void onCreate() {
         super.onCreate();
         sharedPreferences
@@ -124,6 +124,9 @@ public class MainService extends Service implements SensorEventListener {
     public void onSensorChanged(SensorEvent sensorEvent) {
         if(sensorManager == null)
             return;
+        if(System.currentTimeMillis() - currentTime <500){
+            return;
+        }
         if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             long currentTime = System.currentTimeMillis();
             long gabOfTime = (currentTime - lastTime);
@@ -137,7 +140,7 @@ public class MainService extends Service implements SensorEventListener {
 
                 if (speed > SHAKE_THRESHOLD) {
                     // 이벤트발생!!
-
+                    currentTime = System.currentTimeMillis();
                     manboCount ++;
                     SharedPreferences.Editor edit = sharedPreferences.edit();
                     edit.putInt(DBManager.SQL_LITE_DATABASE_MAN_BO_GI_COUNT , manboCount);
@@ -150,18 +153,10 @@ public class MainService extends Service implements SensorEventListener {
                             mCallback.count(manboCount ,FAIL_GET_GPS_INFOMATION,longitude,latitude);
                         else{
                             if(txvBackgroundCount != null)
-                                txvBackgroundCount.setText(String.valueOf(manboCount));
+                                txvBackgroundCount.setText(Global.getManBOcount(this, manboCount));
 
                             if(txvBackgroundDistence != null){
-                                if(1000>distance){
-                                    txvBackgroundDistence.setText(String.valueOf( Global.meter(distance)) +  getString(R.string.meter));
-
-                                }else
-                                {
-                                    txvBackgroundDistence.setText(String.valueOf( Global.meterToKillmeter(distance)) +  getString(R.string.kilometer));
-
-                                }
-
+                                txvBackgroundDistence.setText(Global.getMeterOrKillmeter(this,distance));
                             }
                         }
 
@@ -191,17 +186,12 @@ public class MainService extends Service implements SensorEventListener {
                             mCallback.count(manboCount , distance  ,(float)longitude,(float)latitude);
                         else{
                             if(txvBackgroundDistence != null){
-                                if(1000>distance){
-                                    txvBackgroundDistence.setText(String.valueOf( Global.meter(distance)) +  getString(R.string.meter));
 
-                                }else{
-
-                                    txvBackgroundDistence.setText(String.valueOf( Global.meterToKillmeter(distance)) +  getString(R.string.kilometer));
-                                }
+                                txvBackgroundDistence.setText(Global.getMeterOrKillmeter(this,distance));
                             }
 
                             if(txvBackgroundCount != null)
-                                txvBackgroundCount.setText(String.valueOf(manboCount));
+                                txvBackgroundCount.setText(Global.getManBOcount(this,manboCount));
 
                         }
 
@@ -265,16 +255,10 @@ public class MainService extends Service implements SensorEventListener {
             txvBackgroundCount = (TextView) linearLayout.findViewById(R.id.txv_background_count);
             txvBackgroundDistence = (TextView) linearLayout.findViewById(R.id.txv_background_distence);
 
-            txvBackgroundCount.setText(String.valueOf(sharedPreferences.getInt(DBManager.SQL_LITE_DATABASE_MAN_BO_GI_COUNT,DBManager.DEFAULT_VALUE_MAN_BO_GI_COUNT)));
+            txvBackgroundCount.setText(Global.getManBOcount(this,sharedPreferences.getInt(DBManager.SQL_LITE_DATABASE_MAN_BO_GI_COUNT,DBManager.DEFAULT_VALUE_MAN_BO_GI_COUNT)));
             double distence = sharedPreferences.getFloat(DBManager.SQL_LITE_DATABASE_DISTENCE,DBManager.DEFAULT_VALUE_DISTENCE);
 
-            if(1000>distence){
-                txvBackgroundDistence.setText(Global.meter(distence) + getString(R.string.meter));
-
-            }else {
-                txvBackgroundDistence.setText(Global.meterToKillmeter(distence) + getString(R.string.kilometer));
-
-            }
+            txvBackgroundDistence.setText(Global.getMeterOrKillmeter(this,distence));
 
             //최상위 윈도우에 넣기 위한 설정
             mParams = new WindowManager.LayoutParams(
@@ -288,7 +272,13 @@ public class MainService extends Service implements SensorEventListener {
            mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);  //윈도우 매니저
             mWindowManager.addView(linearLayout, mParams);      //윈도우에 뷰 넣기. permission 필요.
             linearLayout.setOnTouchListener(mViewTouchListener);              //팝업뷰에 터치 리스너 등록
-
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainService.this,MainActivity.class);
+                    startActivity(intent);
+                }
+            });
         }else{
             if(mWindowManager != null) {        //서비스 종료시 뷰 제거. *중요 : 뷰를 꼭 제거 해야함.
                 if(linearLayout != null) mWindowManager.removeView(linearLayout);
@@ -327,10 +317,10 @@ public class MainService extends Service implements SensorEventListener {
 
     private void setMaxPosition() {
         DisplayMetrics matrix = new DisplayMetrics();
-        mWindowManager.getDefaultDisplay().getMetrics(matrix);		//ȭ�� ������ �����ͼ�
+        mWindowManager.getDefaultDisplay().getMetrics(matrix);
 
-        MAX_X = matrix.widthPixels - linearLayout.getWidth();			//x �ִ밪 ����
-        MAX_Y = matrix.heightPixels - linearLayout.getHeight();			//y �ִ밪 ����
+        MAX_X = matrix.widthPixels - linearLayout.getWidth();
+        MAX_Y = matrix.heightPixels - linearLayout.getHeight();
     }
 
     private void optimizePosition() {
@@ -364,6 +354,9 @@ public class MainService extends Service implements SensorEventListener {
             latitude = myLocation.getLatitude();
             longitude = myLocation.getLongitude();
             Log.d("d", "nMap location lat " + myLocation.getLatitude() +" lng " + myLocation.getLongitude());
+
+            mCallback.count(manboCount ,FAIL_GET_GPS_INFOMATION,longitude,latitude);
+
             return true;
         }
 
@@ -371,13 +364,11 @@ public class MainService extends Service implements SensorEventListener {
         public void onLocationUpdateTimeout(NMapLocationManager locationManager) {
 
 
-            Toast.makeText(MainService.this, "Your current location is temporarily unavailable.", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onLocationUnavailableArea(NMapLocationManager locationManager, NGeoPoint myLocation) {
 
-            Toast.makeText(MainService.this, "Your current location is unavailable area.", Toast.LENGTH_LONG).show();
 
         }
 
@@ -399,8 +390,7 @@ public class MainService extends Service implements SensorEventListener {
         } else {
             boolean isMyLocationEnabled = mMapLocationManager.enableMyLocation(true);
             if (!isMyLocationEnabled) {
-                Toast.makeText(this, "Please enable a My Location source in system settings",
-                        Toast.LENGTH_LONG).show();
+
 
                 Intent goToSettings = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(goToSettings);

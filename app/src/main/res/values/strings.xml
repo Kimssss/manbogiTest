@@ -2,6 +2,8 @@
     <string name="app_name">NaverCodeTest</string>
     <string name="kilometer">km</string>
     <string name="meter">m</string>
+    <string name="man_bo_gi_count">보</string>
+
 
     <string name="now_location">현재 위치</string>
     <string name="start">START</string>
